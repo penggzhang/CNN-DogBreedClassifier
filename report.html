@@ -12108,7 +12108,7 @@ There are 836 test dog images.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> In my opinion, providing a clear view of a face is not a reasonable expectation to pose to users, since as usual we can recognize a human from a part of body or a view of somebody's back, not merely from frontal faces. So we may train more classifiers to recognize different parts of human bodies or view of backs. With such classifiers our algorithm will be able to detect human within images in a more general way.</p>
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
 </div>
@@ -13062,7 +13062,8 @@ test_{network} = bottleneck_features['test']</code></pre>
 
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> First, ResNet50 was selected for transfer learning since its architecture has very good feature extraction performance. Then, as done in the above cell, bottleneck features were obtained and will be the inputs for training  output classifier. Global Average Pooling was applied on the input to reduce dimensionality, and dropout was then done for regularization. For breed classification, two, rather than one as in Step 4, fully connected layers were used with relu and softmax activation respectively.</p>
+<p>Such architecture takes advantage of the good feature extraction capabability of ResNet50 from transfer learning. Also by adding one more fully connected layer, its classification capabability will be improved significantly.</p>
 
 </div>
 </div>
